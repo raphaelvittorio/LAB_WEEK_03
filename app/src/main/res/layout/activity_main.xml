@@ -12,5 +12,5 @@
         android:name="com.example.lab_week_03.MainFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
-
+    
 </androidx.constraintlayout.widget.ConstraintLayout>

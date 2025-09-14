@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
+
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
@@ -33,13 +35,17 @@ class DetailFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // pastikan kamu punya layout fragment_detail.xml
         return inflater.inflate(R.layout.fragment_detail, container, false)
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         val coffeeId = arguments?.getInt(COFFEE_ID, 0) ?: 0
         setCoffeeData(coffeeId)
+
+        view.findViewById<View>(R.id.btn_back).setOnClickListener {
+            it.findNavController().navigateUp()
+        }
     }
 
     fun setCoffeeData(id: Int) {
@@ -58,6 +64,7 @@ class DetailFragment : Fragment() {
             }
         }
     }
+
 
     companion object {
         private const val COFFEE_ID = "COFFEE_ID"
